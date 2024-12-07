@@ -1,0 +1,41 @@
+* {border: 0; box-sizing: border-box; margin: 0; padding: 0;}
+body, html {height: 100vh; width: 100vw;}
+body {align-items: center; justify-content: center;
+      display: flex; flex-direction: column;}
+button, div.bar {border-radius: 0.5rem;}
+button {padding: 0.5rem; width: 100%;}
+button.minus, button.plus {width: 1.5rem;}
+button.text {font-size: 2rem; margin-bottom: 0.5rem; max-width: 50%; min-width: 50%;}
+.cursor {cursor: pointer;}
+div.bar, div.line {background-color: red;}
+div.bar {border: solid 1px black; height: 2%; width: 0;}
+div.bot {position: absolute;}
+div.center {align-items: center; justify-content: center;}
+div.flex-col {display: flex; flex-direction: column;}
+div.flex-row {display: flex; flex-direction: row; flex-wrap: nowrap;}
+div.field {background-color: springgreen; border-radius: 1rem;
+           min-height: 100%; max-width: 100%;
+           margin: 0 2.5%;}
+div.input-number {display: inline-block;}
+div.lefts {align-items: flex-end; justify-content: center;
+           border: 2px solid blue; border-right: none;
+           border-bottom-left-radius: 1rem; border-top-left-radius: 1rem;}
+div.line {height: 3px; max-width: 20px; width: 100%;
+          position: relative; top: 50px; z-index: 100;}
+div.line-lefts {left: 35px;}
+div.line-rights {left: 20px;}
+div.loader {height: 50vh; width: 50vw;}
+div.melee {min-width: 80px;}
+div.range {min-width: 70px;}
+div.rights {align-items: flex-start; justify-content: center;
+            border: 2px solid red; border-left: none;
+            border-bottom-right-radius: 1rem; border-top-right-radius: 1rem;}
+div.separator {width: 10px;}
+div.side {flex-wrap: nowrap; width: 50%;}
+div.sprite {background-repeat: no-repeat; height: 80px; width: 80px;}
+div.text {text-align: center;}
+div#update1, div#update2, div#update3 {text-align: center; width: 100%;}
+div.wrapper {padding: 1rem; width: 100vw;}
+input {max-width: 1rem; text-align: center;}
+select {min-width: 10rem; text-align: center;}
+::-webkit-inner-spin-button {display: none;}

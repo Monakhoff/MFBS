@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang = "ru">
+<head>
+    <link href="./favicon.ico" rel="icon" sizes="32x32" type="image/x-icon">
+    <link href="./index.css" rel="stylesheet">
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0, user-scalable = no">
+    <title>Medieval Battles Fast Simulator</title>
+</head>
+<body>
+<div class = "wrapper" hidden>
+    <div class = "center flex-col">
+        <div class = "text">
+            <h2>Автосимулятор расчёта исхода битвы</h2>
+            <span>Техническая демонстрация<span>
+        </div>
+        <br>
+        <div class = "flex-row field">
+            <div class = "flex-row side" id = "lefts">
+                <div class = "flex-col lefts range"></div>
+                <div class = "flex-col lefts melee"></div>
+            </div>
+            <div class = "flex-row separator"></div>
+            <div class = "flex-row side" id = "rights">
+                <div class = "flex-col melee rights"></div>
+                <div class = "flex-col range rights"></div>
+            </div>
+        </div>
+        <br>
+        <div class = "center flex-row">
+            <div class = "center flex-col">
+                <select name = "lefts">
+                    <option disabled>Выберете сторону:</option>
+                    <option value = "Novgorod" selected>Новгород</option>
+                    <option value = "Tribal">Ополчение племён</option>
+                </select>
+                <br>
+                <div class = "center input-number">
+                    <label for = "range">
+                        <span>Лучников: </span>
+                        <button class = "cursor minus">
+                           <span>-</span>
+                        </button>
+                        <input max = "3" min = "0" name = "range" size = "1" type = "number" value = "0" readonly>
+                        <button class = "cursor plus">
+                            <span>+</span>
+                        </button>
+                    </label>
+                </div>
+                <br>
+                <div class = "center input-number">
+                    <label for = "melee">
+                        <span>Мечников: </span>
+                        <button class = "cursor minus">
+                            <span>-</span>
+                        </button>
+                        <input max = "3" min = "0" name = "melee" size = "1" type = "number" value = "1" readonly>
+                        <button class = "cursor plus">
+                            <span>+</span>
+                        </button>
+                    </label>
+                </div>
+            </div>
+            <div class = "center flex-col">
+                <select name = "rights">
+                    <option disabled>Выберете сторону:</option>
+                    <option value = "Kiev" selected>Киев</option>
+                    <option value = "Tribal">Ополчение племён</option>
+                </select>
+                <br>
+                <div class = "center input-number">
+                    <label for = "range">
+                        <span>Лучников: </span>
+                        <button class = "cursor minus">
+                            <span>-</span>
+                        </button>
+                        <input max = "3" min = "0" name = "range" size = "1" type = "number" value = "0" readonly>
+                        <button class = "cursor plus">
+                            <span>+</span>
+                        </button>
+                    </label>
+                </div>
+                <br>
+                <div class = "center input-number">
+                    <label for = "melee">
+                        <span>Мечников: </span>
+                        <button class = "cursor minus">
+                            <span>-</span>
+                        </button>
+                        <input max = "3" min = "0" name = "melee" size = "1" type = "number" value = "1" readonly>
+                        <button class = "cursor plus">
+                            <span>+</span>
+                        </button>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div>
+            <button class = "cursor start">Старт симуляции</button>
+        </div>
+        <div class = "flex-col" id = "update">
+            <div id = "update1"></div>
+            <div id = "update2"></div>
+        </div>
+        <div id = "update3"></div>
+    </div>
+</div>
+<script src = "./index.js" type = "text/javascript"></script>
+<div class = "loader center flex-col">
+    <button class = "cursor text" id = "start">Loading</button>
+    <div class = "bar"></div>
+</div>
+<link rel = "preload" href = "./images/Kiev_bowman_attack.png" as = "image" onload = "animateBar();">
+<link rel = "preload" href = "./images/Kiev_bowman_death.png" as = "image" onload = "animateBar();">
+<link rel = "preload" href = "./images/Kiev_bowman_move.png" as = "image" onload = "animateBar();">
+<link rel = "preload" href = "./images/Kiev_bowman_stand.png" as = "image" onload = "animateBar();">
+<link rel = "preload" href = "./images/Kiev_swordsman_attack.png" as = "image" onload = "animateBar();">
+<link rel = "preload" href = "./images/Kiev_swordsman_death.png" as = "image" onload = "animateBar();">
+<link rel = "preload" href = "./images/Kiev_swordsman_defense.png" as = "image"onload = "animateBar();">
+<link rel = "preload" href = "./images/Kiev_swordsman_stand.png" as = "image" onload = "animateBar();">
+<link rel = "preload" href = "./images/Novgorod_axeman_attack.png" as = "image" onload = "animateBar();">
+<link rel = "preload" href = "./images/Novgorod_axeman_death.png" as = "image" onload = "animateBar();">
+<link rel = "preload" href = "./images/Novgorod_axeman_stand.png" as = "image" onload = "animateBar();">
+<link rel = "preload" href = "./images/Novgorod_crossbowman_attack.png" as = "image" onload = "animateBar();">
+<link rel = "preload" href = "./images/Novgorod_crossbowman_death.png" as = "image" onload = "animateBar();">
+<link rel = "preload" href = "./images/Novgorod_crossbowman_move.png" as = "image" onload = "animateBar();">
+<link rel = "preload" href = "./images/Novgorod_crossbowman_stand.png" as = "image" onload = "animateBar();">
+<link rel = "preload" href = "./images/Tribal_bowman_attack.png" as = "image" onload = "animateBar();">
+<link rel = "preload" href = "./images/Tribal_bowman_death.png" as = "image" onload = "animateBar();">
+<link rel = "preload" href = "./images/Tribal_bowman_move.png" as = "image" onload = "animateBar();">
+<link rel = "preload" href = "./images/Tribal_bowman_stand.png" as = "image" onload = "animateBar();">
+<link rel = "preload" href = "./images/Tribal_swordsman_attack.png" as = "image" onload = "animateBar();">
+<link rel = "preload" href = "./images/Tribal_swordsman_death.png" as = "image" onload = "animateBar();">
+<link rel = "preload" href = "./images/Tribal_swordsman_defense.png" as = "image" onload = "animateBar();">
+<link rel = "preload" href = "./images/Tribal_swordsman_stand.png" as = "image" onload = "animateBar();">
+<script src = "./scripts/arena.js" type = "text/javascript"></script>
+<script src = "./scripts/audio.js" type = "text/javascript"></script>
+<script src = "./scripts/bots.js" type = "text/javascript"></script>
+</body>
+</html>
